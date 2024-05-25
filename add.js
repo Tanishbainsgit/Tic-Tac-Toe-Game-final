@@ -42,6 +42,9 @@ console.log(`
         let row = readlineSync.question(`Player ${player}, enter your move here (0, 1, 2)`);
         // This prompt allow the palyer to enter the move in column.
         let col = readlineSync.question(`Player ${player}, enter your move here (0, 1, 2)`);
+        // This is for convert ti interger.
+        row = parseInt(row, 10);
+        col = parseInt(col, 10);
 
         // This is used to check if the current move is within the bounds of the board and the cell is empty.
         if (row >= 0 && row <= 2 && col >= 0 && col <= 2 && grid[row][col] === ' ' ) {
@@ -104,5 +107,41 @@ function checkWin(player) {
     return true;
  }
 
-// 
+// This function is for changing the player's turn.
+function switchPlayer(player) {
+    return player == 'X' ? '0' : 'X';
+}
+//console.log(switchPlayer)
+
+// This function is for display the winner and show the which player has won the game .
+function showWinner(player) {
+    showWinner(`player ${player} Wins!`)
+}
+//console.log(showWinner)
+
+// This is the main function of the game.
+// This function will control the whole game flow of the game and checking for the win and draw.
+function tictactoe() {
+    // The player x
+    let currentPlayer = 'X'
+    // This is the variale to store the winner.
+    let winner = null;
+
+    // This is the loop for continuous the game until the game will detect and winner combination or the game will draw.
+    while (!winner && !checkDraw()) {
+        // This will display the current state of board.
+        displayGrid();
+        // This allows the player to make a move.
+        playerMove(currentPlayer)
+
+        // This is to check if the current player has won the game.
+        if(checkWin(currentPlayer)){
+            winner = currentPlayer
+        } else {
+            currentPlayer = switchPlayer(currentPlayer);
+
+        }
+    }
+} 
+
 
