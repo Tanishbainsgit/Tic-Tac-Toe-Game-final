@@ -44,9 +44,9 @@ console.log(`
         let col = readlineSync.question(`Player ${player}, enter your move here (0, 1, 2)`);
 
         // This is used to check if the current move is within the bounds of the board and the cell is empty.
-        if (row >= 0 && row <= 2 && col >= 0 && col <= 2 && board[row][col] === ' ' ) {
+        if (row >= 0 && row <= 2 && col >= 0 && col <= 2 && grid[row][col] === ' ' ) {
             // This is for having the player's move mark on grid.
-            board[row][col] = player;
+            grid[row][col] = player;
             // This is used ti set the validMove ti the true for exist the loop.
             validMove = true;
         } else {
@@ -59,41 +59,50 @@ console.log(`
  //console.log(playerMove)
 
  // This function is for checking if all winning condition occured and the player won.
-
 function checkWin(player) {
     // It is for checking any any winning occured in row.
     for (let i = 0; i < 3; i++) {
-        if (board[i][0] == player && board[i][1] == player && board[i][2] == player){
+        if (grid[i][0] == player && grid[i][1] == player && grid[i][2] == player){
             // This function is for checking for winning and return true if all the cell in a row are occupied by the same player.
             return true;
         }
     }
-
     // This is now checking all the winning condition occured in a column.
     for (let i = 0; i < 3; i++) {
-        if(board[0][i] == player && borad[1][i] == player && board[2][i] == player){
+        if(grid[0][i] == player && grid[1][i] == player && grid[2][i] == player){
             // Thid fo for returning truce if all the cells in a column are occupied by same player.
             return true;
-
         }
-
     }
-
     // This is for detecting all winning conditions first diaginal (Top left to Right bottom)
-    if (board[0][0] == player && board[1][1] == player && board[2][2] == player){
+    if (grid[0][0] == player && grid[1][1] == player && grid[2][2] == player){
         // This return if any winning condition found.
         return true;
     }
-
     // This is checking winning conditions second diaginal (reight top to left bottom).
-    if (board[0][2] == player && board[1][1] == player && board[2][0] == player){
+    if (grid[0][2] == player && grid[1][1] == player && grid[2][0] == player){
         return true;
     }
-
     // If no winning condition found then return to false.
-    return false
-
-    
+    return false 
 }
- // console.log(checkWin)
- 
+ //console.log(checkWin)
+
+ // This is the function to check the game is draw and also check that all cells are filled and there is no winner.
+ function checkDraw() {
+    // This is for the row.
+    for(let row of grid){
+        // This is now for the each row.
+        for(let cell of row) {
+            if(cell === ' ') {
+                // This is for if there is any empty cell in the row.
+                return false;
+            }
+        }
+    }
+    // This is for returning true if all the cells are in row are filled.
+    return true;
+ }
+
+// 
+
