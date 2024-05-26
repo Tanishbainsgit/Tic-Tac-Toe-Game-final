@@ -39,9 +39,9 @@ console.log(`
     // This for creating a loop until a particular move is encountered or made.
     while (!validMove) {
         // This prompt allow the player to enter the move in row.
-        let row = readlineSync.question(`Player ${player}, enter your move here (0, 1, 2)`);
+        let row = readlineSync.question(`Player ${player}, enter your move here for the row (0, 1, 2)`);
         // This prompt allow the palyer to enter the move in column.
-        let col = readlineSync.question(`Player ${player}, enter your move here (0, 1, 2)`);
+        let col = readlineSync.question(`Player ${player}, enter your move here for the col (0, 1, 2)`);
         // This is for convert ti interger.
         row = parseInt(row, 10);
         col = parseInt(col, 10);
