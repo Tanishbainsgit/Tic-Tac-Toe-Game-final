@@ -19,11 +19,11 @@ function displayGrid() {
 
 console.log(`
     0   1   2                  
-0 ${grid[0][0]} | ${grid[0][1]} | ${grid[0][2]},
-  --+---+--
-1 ${grid[1][0]} | ${grid[1][1]} | ${grid[1][2]},
-  --+---+--
-2 ${grid[2][0]} | ${grid[2][1]} | ${grid[2][2]},
+0   ${grid[0][0]} | ${grid[0][1]} | ${grid[0][2]}
+   ---+---+---
+1   ${grid[1][0]} | ${grid[1][1]} | ${grid[1][2]}
+   ---+---+---
+2   ${grid[2][0]} | ${grid[2][1]} | ${grid[2][2]}
 
 `)
 
@@ -115,7 +115,7 @@ function switchPlayer(player) {
 
 // This function is for display the winner and show the which player has won the game .
 function showWinner(player) {
-    showWinner(`player ${player} Wins!`)
+    console.log(`player ${player} Wins!`)
 }
 //console.log(showWinner)
 
@@ -124,7 +124,7 @@ function showWinner(player) {
 function tictactoe() {
     // The player x
     let currentPlayer = 'X'
-    // This is the variale to store the winner.
+    // This is the variale to store the win ner.
     let winner = null;
 
     // This is the loop for continuous the game until the game will detect and winner combination or the game will draw.
@@ -142,6 +142,17 @@ function tictactoe() {
 
         }
     }
+    // This function is for dispalying the final state of the grid.
+    displayGrid();
+    if(winner){
+        // Show the winner of the game
+        showWinner(winner);
+    } else {
+        // The game will allowance the draw condition.
+        console.log(`It,s a Draw`)
+    }
 } 
+// The game will start by inplementing the main function.
+tictactoe();
 
 
